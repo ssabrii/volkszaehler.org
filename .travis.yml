@@ -142,6 +142,8 @@ script:
     - if [ "$JSLINT" = true ]; then gulp jshint; fi
 
 after_success:
+    - echo $DOCKER_USER
+    - echo $DOCKER_PASS
     - |
       if [ "$COMPONENT" == "DOCKER" ] && [ "$TRAVIS_BRANCH" == "master" ] && [ "$DOCKER_USER" != "" ]; then
         docker login -u $DOCKER_USER -p $DOCKER_PASS
